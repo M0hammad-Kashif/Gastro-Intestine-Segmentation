@@ -1,7 +1,7 @@
 from imports import *
 from torch.utils.data import Dataset
 
-from utils import load_img, load_msk
+from utils import load_img, load_msk, prepare_loaders
 
 
 class BuildDataset(Dataset):
@@ -36,3 +36,6 @@ class BuildDataset(Dataset):
                 img = data['image']
             img = np.transpose(img, (2, 0, 1))
             return torch.tensor(img)
+
+
+train_loader, valid_loader = prepare_loaders(fold=5, debug=True)
