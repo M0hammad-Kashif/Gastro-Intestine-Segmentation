@@ -31,7 +31,6 @@ from torch.cuda import amp
 
 import timm
 
-# Albumentations for augmentations
 import albumentations as A
 from albumentations.pytorch import ToTensorV2
 
@@ -40,11 +39,10 @@ from joblib import Parallel, delayed
 
 # For colored terminal text
 from colorama import Fore, Back, Style
-c_  = Fore.GREEN
+c_ = Fore.GREEN
 sr_ = Style.RESET_ALL
 
 import warnings
 warnings.filterwarnings("ignore")
 
-# For descriptive error messages
 os.environ['CUDA_LAUNCH_BLOCKING'] = "1"

@@ -3,7 +3,7 @@ import torch
 
 class CFG:
     seed = 101
-    debug = False  # set debug=False for Full Training
+    debug = False
     exp_name = '2.5D'
     comment = 'unetplusplus - regnet_008'
     model_name = 'UNetPlusPlus'
