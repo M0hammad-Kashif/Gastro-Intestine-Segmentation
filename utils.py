@@ -1,15 +1,18 @@
 import os
 import random
-import pandas as pd
+
+import cv2
+import matplotlib.pyplot as plt
 import numpy as np
-import torch
+import pandas as pd
 import tensorflow as tf
+import torch
+from IPython.core.display_functions import display
 from matplotlib.patches import Rectangle
+from sklearn.model_selection import StratifiedGroupKFold
 
 from config import CFG
 from preprocess import df
-import cv2
-import matplotlib.pyplot as plt
 
 
 def set_seed(seed=42):
@@ -90,7 +93,7 @@ def rle_decode(mask_rle, shape):
     starts, lengths = [np.asarray(x, dtype=int) for x in (s[0:][::2], s[1:][::2])]
     starts -= 1
     ends = starts + lengths
-    img = np.zeros(shape[0]*shape[1], dtype=np.uint8)
+    img = np.zeros(shape[0] * shape[1], dtype=np.uint8)
     for lo, hi in zip(starts, ends):
         img[lo:hi] = 1
     return img.reshape(shape)  # Needed to align to RLE direction
@@ -106,3 +109,8 @@ def rle_encode(img):
     runs = np.where(pixels[1:] != pixels[:-1])[0] + 1
     runs[1::2] -= runs[::2]
     return ' '.join(str(x) for x in runs)
+
+
+skf = StratifiedGroupKFold(n_splits=CFG.n_fold, shuffle=True, random_state=CFG.seed)
+for fold, (train_idx, val_idx) in enumerate(skf.split(df, df['empty'], groups=df["case"])):
+    df.loc[val_idx, 'fold'] = fold
