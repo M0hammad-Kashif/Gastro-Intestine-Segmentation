@@ -10,8 +10,11 @@ import torch
 from IPython.core.display_functions import display
 from matplotlib.patches import Rectangle
 from sklearn.model_selection import StratifiedGroupKFold
+from torch.utils.data import DataLoader
 
+from augmentation import data_transforms
 from config import CFG
+from dataloader import BuildDataset
 from preprocess import df
 
 
@@ -114,3 +117,20 @@ def rle_encode(img):
 skf = StratifiedGroupKFold(n_splits=CFG.n_fold, shuffle=True, random_state=CFG.seed)
 for fold, (train_idx, val_idx) in enumerate(skf.split(df, df['empty'], groups=df["case"])):
     df.loc[val_idx, 'fold'] = fold
+
+
+def prepare_loaders(fold, debug=False):
+    train_df = df.query("fold!=@fold").reset_index(drop=True)
+    valid_df = df.query("fold==@fold").reset_index(drop=True)
+    if debug:
+        train_df = train_df.head(32 * 5).query("empty==0")
+        valid_df = valid_df.head(32 * 3).query("empty==0")
+    train_dataset = BuildDataset(train_df, transforms=data_transforms['train'])
+    valid_dataset = BuildDataset(valid_df, transforms=data_transforms['valid'])
+
+    train_loader = DataLoader(train_dataset, batch_size=CFG.train_bs if not debug else 20,
+                              num_workers=4, shuffle=True, pin_memory=True, drop_last=False)
+    valid_loader = DataLoader(valid_dataset, batch_size=CFG.valid_bs if not debug else 20,
+                              num_workers=4, shuffle=False, pin_memory=True)
+
+    return train_loader, valid_loader
