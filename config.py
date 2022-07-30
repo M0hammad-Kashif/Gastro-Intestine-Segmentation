@@ -2,7 +2,7 @@ import torch
 
 
 class CFG:
-    seed = 101
+    seed = 16
     debug = False
     exp_name = '2.5D'
     comment = 'unetplusplus - regnet_008'
