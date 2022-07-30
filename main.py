@@ -16,12 +16,7 @@ for fold in CFG.folds:
     print(f'#' * 15)
     print(f'### Fold: {fold}')
     print(f'#' * 15)
-    run = wandb.init(project='uw-maddison-gi-tract',
-                     config={k: v for k, v in dict(vars(CFG)).items() if '__' not in k},
-                     anonymous=anonymous,
-                     name=f"fold-{fold}|dim-{CFG.img_size[0]}x{CFG.img_size[1]}|model-{CFG.model_name}",
-                     group=CFG.comment,
-                     )
+    run = wandb.init(project='uw-maddison-gi-tract')
     train_loader, valid_loader = prepare_loaders(fold=fold, debug=CFG.debug)
     model = build_model()
     optimizer = optim.Adam(model.parameters(), lr=CFG.lr, weight_decay=CFG.wd)
