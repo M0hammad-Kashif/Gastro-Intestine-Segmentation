@@ -9,7 +9,7 @@ class CFG:
     comment = 'unetplusplus - regnet_008'
     model_name = 'UNetPlusPlus'
     backbone = 'timm-regnety_008'
-    train_bs = 32
+    train_bs = 16
     valid_bs = train_bs * 2
     img_size = [160, 192]
     epochs = 5
