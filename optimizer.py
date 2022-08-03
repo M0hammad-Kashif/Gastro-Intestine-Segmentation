@@ -19,7 +19,7 @@ def fetch_scheduler(optimizer):
                                                    min_lr=CFG.min_lr, )
     elif CFG.scheduer == 'ExponentialLR':
         scheduler = lr_scheduler.ExponentialLR(optimizer, gamma=0.85)
-    elif CFG.scheduler == None:
+    elif CFG.scheduler is None:
         return None
 
     return scheduler

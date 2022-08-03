@@ -2,6 +2,7 @@ import torch
 
 
 class CFG:
+    scheduer = None
     seed = 16
     debug = False
     exp_name = '2.5D'
