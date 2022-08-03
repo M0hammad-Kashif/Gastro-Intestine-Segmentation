@@ -8,7 +8,7 @@ class CFG:
     exp_name = '2.5D'
     comment = 'unetplusplus - regnet_008'
     model_name = 'UNetPlusPlus'
-    backbone = 'timm-regnety_008'
+    backbone = 'efficientnet-b7'
     train_bs = 16
     valid_bs = train_bs * 2
     img_size = [160, 192]
