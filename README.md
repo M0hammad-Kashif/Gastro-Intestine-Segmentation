@@ -16,7 +16,7 @@ Model link :
 
 # Gastro-Intestinal-Images
 
-![Sample Image](sampleImages/sampleTraining.png)
+### Model Output
 
 ![Model Output](sampleImages/giOutput.png)
 
