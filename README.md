@@ -7,3 +7,21 @@
 > 
 > The UW-Madison Carbone Cancer Center is a pioneer in MR-Linac based radiotherapy, and has treated patients with MRI guided radiotherapy based on their daily anatomy since 2015. UW-Madison has generously agreed to support this project which provides anonymized MRIs of patients treated at the UW-Madison Carbone Cancer Center. The University of Wisconsin-Madison is a public land-grant research university in Madison, Wisconsin. The Wisconsin Idea is the university's pledge to the state, the nation, and the world that their endeavors will benefit all citizens.
 
+# Architecture Used
+
+A Nested U-Net Architecture i.e. Unet++ [https://doi.org/10.48550/arXiv.1807.10165] with Efficientnet b-7 [https://doi.org/10.48550/arXiv.1905.11946] as a backbone architecture.
+
+Model link :
+[Unet++](https://drive.google.com/file/d/1umSTGMgIzYoIonmizi53v5fXtI0EAGMg/view?usp=sharing)
+
+# Gastro-Intestinal-Images
+
+![Sample Image](sampleImages/sampleTraining.png)
+
+![Model Output](sampleImages/giOutput.png)
+
+# Authors
+
+- [Mohammad-Kashif](https://github.com/M0hammad-Kashif/)
+
+- [Haider Zama](https://github.com/haiderzm)
