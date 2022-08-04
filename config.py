@@ -6,7 +6,7 @@ class CFG:
     seed = 16
     debug = False
     exp_name = '2.5D'
-    comment = 'unetplusplus - regnet_008'
+    comment = 'UNET++ -eff-b7'
     model_name = 'UNetPlusPlus'
     backbone = 'efficientnet-b7'
     train_bs = 16
