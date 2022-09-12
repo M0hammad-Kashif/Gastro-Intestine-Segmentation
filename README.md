@@ -24,4 +24,4 @@ Model link :
 
 - [Mohammad-Kashif](https://github.com/M0hammad-Kashif/)
 
-- [Haider Zama](https://github.com/haiderzm)
+- [Md Haider Zama](https://github.com/haiderzm)
