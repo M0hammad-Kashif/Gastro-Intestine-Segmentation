@@ -18,7 +18,26 @@ Model link :
 
 ### Model Output
 
-![Model Output](sampleImages/giOutput.png)
+![Model Output](assets/giOutput.png)
+
+### Metrics 
+
+- Jaccard Index on Validation set
+
+ ![](assets/Jaccard.png)
+
+- Dice Coefficient on Validation set
+
+![](assets/Dice.png)
+
+### Losses
+Used the weighted combination of BCE and TverskyLoss.
+
+![](assets/loss.png)
+
+### Learning Rate Scheduler
+
+![](assets/LR.png)
 
 # Authors
 
